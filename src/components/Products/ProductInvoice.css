@@ -1,0 +1,81 @@
+@media print {
+  body {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    font-size: 18px;
+  }
+  .top {
+    display: flex;
+    align-items: center;
+  }
+  .date {
+    font-size: 18px;
+    margin-right: 30%;
+  }
+  .invoice-details {
+    margin-top: 10px;
+    text-align: center;
+  }
+  .tabl {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin: 2px;
+  }
+  .table {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    width: 30% !important;
+  }
+  .tab {
+    border-bottom: 1px solid grey;
+  }
+  .invoice-footer {
+    position: absolute;
+    bottom: -400px;
+  }
+  .key {
+    align-items: center;
+    width: 100%;
+  }
+  .key-feature {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    border-top: 1px solid grey;
+  }
+
+  .key-feature-box {
+    width:50%; /* Two key features in one row */
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 0;
+  }
+
+  .key-feature-box-img {
+    width: 100%;
+    border-radius: 5px;
+  }
+
+  .key-feature-box-content {
+    width: 100% !important;
+    font-size: 24px;
+  }
+
+  .tabel th,
+  .tabel tr {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .speci {
+    flex: 2;
+    margin-right: 15px;
+    border-bottom: 1px solid grey;
+    max-height: 70px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+  }
+}
