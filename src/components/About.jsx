@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function About() {
   return (
-    <section className="about_section layout_margin-bottom mt-5" >
+    <section className="about_section layout_margin-bottom" >
       <div className="container  ">
         <div className="row">
           <div className="col-md-6 ">

@@ -1,85 +1,68 @@
 import React, { useEffect, useState } from 'react';
 import './shopStyle.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import fetchData from './AdvanceSearchSlice';
 
 const imageUrl = 'https://supercoolacimages.alphanitesofts.net/';
 
 const ProductListing = () => {
+
     const acCategories = ['Split AC', 'Window AC', 'Wall Mounted', 'Floor Standing', 'Cassette AC', 'Ducted AC'];
     const CapacityBTU = ['12000 BTUs', '18000 BTUs', '24000 BTUs', '30000 BTUs', '36000 BTUs', '48000 BTUs', '60000 BTUs'];
     const compressorType = ['Scroll', 'Rotary', 'Piston'];
 
-    const [selectedACType, setSelectedACType] = useState([]);
-    const [selectedCapacityBTU, setSelectedCapacityBTU] = useState([]);
-    const [selectedCompressorType, setSelectedCompressorType] = useState([]);
-    const [visibleProducts, setVisibleProducts] = useState(100);
+    const location = useLocation();
+    const data = location?.state?.item;
+    const [categories, setCategories] = useState([]);
+    const [loading, setLoading] = useState(false)
     const [isFilterVisible, setIsFilterVisible] = useState(true);
-    const [allAcs, setAllAcs] = useState([]);
-    const [filteredAcs, setFilteredAcs] = useState([]);
+    const [accCategories, setAcCategories] = useState([]);
+    const [capacityBTU, setCapacityBTU] = useState([])
+    const [compressor, setCompressor] = useState([])
+    const [selectedCategory, setSelectedCategory] = useState(data)
+
+    useEffect(() => {
+        getData()
+    }, [accCategories, capacityBTU, compressor])
+
+    const getData = () => {
+        setLoading(true)
+        const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        const raw = JSON.stringify({
+            "type": selectedCategory ? [selectedCategory] : accCategories,
+            "capacity": capacityBTU,
+            "compressor": compressor
+        });
+
+        const requestOptions = {
+            method: "POST",
+            headers: myHeaders,
+            body: raw,
+            redirect: "follow"
+        };
+
+        fetch("https://supercoolac.alphanitesofts.net/api/advance_search_product", requestOptions)
+            .then((response) => response.json())
+            .then((result) => {
+                if (result?.status === "200") {
+                    setCategories(result?.data)
+                    setLoading(false)
+                } else {
+                    setLoading(false)
+                }
+            })
+            .catch((error) => {
+                console.error(error)
+                setLoading(false)
+
+            });
+    }
 
     const toggleFilter = () => {
         setIsFilterVisible(!isFilterVisible);
     };
-
-    const handleACTypeChange = (value) => {
-        setSelectedACType(value);
-        filterData(value, selectedCapacityBTU, selectedCompressorType);
-    };
-
-    const handleCapacityBTUChange = (value) => {
-        setSelectedCapacityBTU(value);
-        filterData(selectedACType, value, selectedCompressorType);
-    };
-
-    const handleCompressorTypeChange = (value) => {
-        setSelectedCompressorType(value);
-        filterData(selectedACType, selectedCapacityBTU, value);
-    };
-
-    const filterData = (acType, capacity, compressor) => {
-        const filteredData = allAcs.filter((item) => {
-            return (
-                (acType.length === 0 || acType.includes(item.type)) &&
-                (capacity.length === 0 || capacity.includes(item.capacity)) &&
-                (compressor.length === 0 || compressor.includes(item.compressor))
-            );
-        });
-
-        setFilteredAcs(filteredData);
-    };
-
-    async function fetchDataAndProcess() {
-        try {
-            const data = await fetchData();
-            if (data !== null) {
-                // console.log(data)
-                setAllAcs(data.data);
-                setFilteredAcs(data.data); // Set the filtered data initially to all data
-            }
-        } catch (error) {
-          return error;
-        }
-    }
-    const splitACs = [];
-    const otherACs = [];
-
-    filteredAcs.forEach((item) => {
-        console.log(item)
-        if (item.type == 'Split AC') {
-            splitACs.push(item);
-        } else {
-            otherACs.push(item);
-        }
-    });
-
-    const combinedProducts = [...splitACs, ...otherACs];
-
-    useEffect(() => {
-        fetchDataAndProcess();
-    }, []);
-
-
 
     return (
         <section className="category-section" id="catergory-selection">
@@ -96,7 +79,8 @@ const ProductListing = () => {
                         <div className="filter-mobile">
                             <div className="filter-mobile-img">
                                 <img src="https://www.supergeneral.com/public/images/icon/filter.png" alt="filter-icon" className="img-fluid lazyload"
-                                    onClick={toggleFilter} />
+                                    onClick={toggleFilter}
+                                />
                             </div>
                             <div className="filter-mobile-text">Filter</div>
                         </div>
@@ -109,9 +93,17 @@ const ProductListing = () => {
                                     <li className="product_type" key={index}>
                                         <input className="pf-types form-check-input" type="checkbox"
                                             value={item}
+                                            // checked={item === data}
                                             id={item}
-                                            checked={selectedACType.includes(item)}
-                                            onChange={(e) => handleACTypeChange(e.target.checked ? [...selectedACType, item] : selectedACType.filter(type => type !== item))}
+                                            onChange={(e) => {
+                                                const checkedValue = e.target.value;
+                                                if (e.target.checked) {
+                                                    setAcCategories((prevCategories) => [...prevCategories, checkedValue]);
+                                                } else {
+                                                    setAcCategories((prevCategories) => prevCategories.filter((category) => category !== checkedValue));
+                                                    setSelectedCategory(null); // Add this line if you haven't declared setSelectedCategory
+                                                }
+                                            }}
                                         />
                                         <label className="form-check-label" for="split-ac">{item}</label>
                                     </li>
@@ -125,8 +117,14 @@ const ProductListing = () => {
                                         <input className="pf-types form-check-input" type="checkbox"
                                             value={item}
                                             id={item}
-                                            checked={selectedCapacityBTU.includes(item)}
-                                            onChange={(e) => handleCapacityBTUChange(e.target.checked ? [...selectedCapacityBTU, item] : selectedCapacityBTU.filter(type => type !== item))}
+                                            onChange={(e) => {
+                                                const checkedValue = e.target.value;
+                                                if (e.target.checked) {
+                                                    setCapacityBTU((prevCategories) => [...prevCategories, checkedValue]);
+                                                } else {
+                                                    setCapacityBTU((prevCategories) => prevCategories.filter((category) => category !== checkedValue));
+                                                }
+                                            }}
                                         />
                                         <label className="form-check-label" for="9000-12000-btus">{item}</label>
                                     </li>
@@ -138,8 +136,14 @@ const ProductListing = () => {
                                         <input className="pf-types form-check-input" type="checkbox"
                                             value={item}
                                             id={item}
-                                            checked={selectedCompressorType.includes(item)}
-                                            onChange={(e) => handleCompressorTypeChange(e.target.checked ? [...selectedCompressorType, item] : selectedCompressorType.filter(type => type !== item))}
+                                            onChange={(e) => {
+                                                const checkedValue = e.target.value;
+                                                if (e.target.checked) {
+                                                    setCompressor((prevCategories) => [...prevCategories, checkedValue]);
+                                                } else {
+                                                    setCompressor((prevCategories) => prevCategories.filter((category) => category !== checkedValue));
+                                                }
+                                            }}
                                         />
                                         <label className="form-check-label" for="reciprocating">{item}</label>
                                     </li>
@@ -153,55 +157,68 @@ const ProductListing = () => {
                     <div className="col-lg-10 col-md-8 col-12 mx-auto">
                         <div className="product-category-data">
                             <div className="product-category-sec">
-                                {combinedProducts ? (
-                                    combinedProducts.slice(0, visibleProducts).map((item, index) => (
-                                        <div className="product-box" key={index}>
-                                            <div className="product-box-top">
-                                                <div className="products-links">
-                                                    <div className="products-link-one">
-                                                        <a className="compare" data-slug="36000-btus-split-air-conditioners-eforce-series">
-                                                            <img alt="compare-36000 BTUs Split Air Conditioners – eForce Series" src="https://www.supergeneral.com/public/images/icon/compare.png" className="img-fluid lazyload" />Compare
-                                                        </a>
+                                {loading === true ? (
+                                    <>
+                                        <div className="container-fluid h-100">
+                                            <div className="row h-100">
+                                                <div className="col vh-100 d-flex align-items-center justify-content-center">
+                                                    <div className="spinner-border text-primary" style={{ height: "4rem", width: "4rem" }} role="status">
+                                                        <span className="visually-hidden"></span>
                                                     </div>
-                                                    <div className="products-link-one share-btn">
-                                                        <a rel="nofollow" href="">
-                                                            <img alt="share-36000 BTUs Split Air Conditioners – eForce Series" src="https://www.supergeneral.com/public/images/icon/share.png" className="img-fluid lazyload" />Share
-                                                        </a>
-                                                        <a rel="nofollow" href="#" className="fb_share share-social" target="_blank">
-                                                            <i className="fab fa-facebook" aria-hidden="true"></i>
-                                                        </a>
-                                                        <a rel="nofollow" className="mail_share share-social" href="#">
-                                                            <i className="fa fa-envelope" aria-hidden="true"></i>
-                                                        </a>
-                                                        <a rel="nofollow" href="#" className="whatsup_share share-social" target="_blank">
-                                                            <i className="fab fa-whatsapp" aria-hidden="true"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div className="product-image">
-                                                    {item?.image ? (
-                                                        <a>
-                                                            <img title="36000 BTUs Split Air Conditioners – eForce Series" src={`${imageUrl}${item.image[0]}`} alt={item.name} className="img-fluid lazyload" />
-                                                        </a>
-                                                    ) : (
-                                                        <img title="36000 BTUs Split Air Conditioners – eForce Series" src="https://www.supergeneral.com/media/products/250/sga288he-sga248he-sga183he.webp" alt={item.name} className="img-fluid lazyload p-3" />
-
-                                                    )}
-                                                </div>
-                                            </div>
-                                            <div className="product-box-meta">
-                                                <div className="product-txt">
-                                                    <h3>{item.name}</h3>
-                                                    {/* <p className="product-code">SGS372HE</p> */}
-                                                </div>
-                                                <div className="product-btn">
-                                                    <Link to={`/productdetails/${item.id}`}>Learn More</Link>
                                                 </div>
                                             </div>
                                         </div>
-                                    ))) : (
-                                    <p>Loading...</p>
-                                )}
+                                    </>
+                                ) : categories.length === 0 ? (
+                                    <div className="no-items-left">
+                                        No Such Item
+                                    </div>
+                                ) : categories.map((item, index) => (
+                                    <div className="product-box" key={index}>
+                                        <div className="product-box-top">
+                                            <div className="products-links">
+                                                <div className="products-link-one">
+                                                    <a className="compare" data-slug="36000-btus-split-air-conditioners-eforce-series">
+                                                        <img alt="compare-36000 BTUs Split Air Conditioners – eForce Series" src="https://www.supergeneral.com/public/images/icon/compare.png" className="img-fluid lazyload" />Compare
+                                                    </a>
+                                                </div>
+                                                <div className="products-link-one share-btn">
+                                                    <a rel="nofollow" href="">
+                                                        <img alt="share-36000 BTUs Split Air Conditioners – eForce Series" src="https://www.supergeneral.com/public/images/icon/share.png" className="img-fluid lazyload" />Share
+                                                    </a>
+                                                    <a rel="nofollow" href="#" className="fb_share share-social" target="_blank">
+                                                        <i className="fab fa-facebook" aria-hidden="true"></i>
+                                                    </a>
+                                                    <a rel="nofollow" className="mail_share share-social" href="#">
+                                                        <i className="fa fa-envelope" aria-hidden="true"></i>
+                                                    </a>
+                                                    <a rel="nofollow" href="#" className="whatsup_share share-social" target="_blank">
+                                                        <i className="fab fa-whatsapp" aria-hidden="true"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div className="product-image">
+                                                {item?.image ? (
+                                                    <a>
+                                                        <img title="36000 BTUs Split Air Conditioners – eForce Series" src={`${imageUrl}${item.image[0]}`} alt={item.name} className="img-fluid lazyload" />
+                                                    </a>
+                                                ) : (
+                                                    <img title="36000 BTUs Split Air Conditioners – eForce Series" src="https://www.supergeneral.com/media/products/250/sga288he-sga248he-sga183he.webp" alt={item.name} className="img-fluid lazyload p-3" />
+
+                                                )}
+                                            </div>
+                                        </div>
+                                        <div className="product-box-meta">
+                                            <div className="product-txt">
+                                                <h3>{item.name}</h3>
+                                                {/* <p className="product-code">SGS372HE</p> */}
+                                            </div>
+                                            <div className="product-btn">
+                                                <Link to={`/productdetails/${item.id}`}>Learn More</Link>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
                         </div>
                         {/* {filteredProducts && visibleProducts < filteredProducts.length && (

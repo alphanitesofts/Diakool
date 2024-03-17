@@ -80,11 +80,11 @@ function Home() {
       <Department />
       <About />
       <OurRecord />
-      <ChooseUs />
+      {/* <ChooseUs /> */}
       <ExtraOne />
       <ExtraTwo />
       <Services />
-      <Client />
+      {/* <Client /> */}
       <Doctors />
       {/* <Blogs/> */}
       <Contact />

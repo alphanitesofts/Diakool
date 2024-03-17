@@ -39,8 +39,6 @@ const App = () => {
         <Route path="/productdetails/:productId" element={<ProductDetails/>} />
         <Route path="/searchProduct/:query" element={<SearchProduct/>} />
 
-
-
       </Routes>
       <Footer/>
     </Router>

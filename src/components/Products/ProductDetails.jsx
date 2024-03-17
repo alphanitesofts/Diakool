@@ -4,13 +4,15 @@ import Specification from './Specification';
 import FetchAcDetails from './FetchAcDetails';
 import { useParams } from 'react-router-dom';
 import { useReactToPrint } from 'react-to-print';
-// import JSZip from 'jszip';
-// import { saveAs } from 'file-saver';
 import ProductInvoice from "./ProductInvoice";
 import FetchKeyFeatures from './FetchKeyFeatures';
 import FetchSpecifications from './FetchSpecification';
-import ImageSection from '../ImageSections/ImageSection';
+
+import turboColl from '../../Image/Turbo Cool.jpg'
+import wallType from '../../Image/Wall Type Spec.jpg'
+
 const imageUrl = 'https://supercoolacimages.alphanitesofts.net/';
+
 
 const ProductDetails = () => {
     const { productId } = useParams();
@@ -24,10 +26,12 @@ const ProductDetails = () => {
     const [specification, setSpecification] = useState('');
     const [key_features, setKey_features] = useState('');
     const componentRef = useRef();
+
     const openLightbox = (index) => {
         setPhotoIndex(index);
         setLightboxIsOpen(true);
     };
+
     async function fetchDataAndProcess() {
         try {
             const data = await FetchAcDetails(productId);
@@ -35,8 +39,8 @@ const ProductDetails = () => {
                 setProduct(data?.data);
                 setSpecification(data?.specifications);
                 setKey_features(data?.key_features);
-                console.log(data?.specifications)
-                console.log(data?.key_features)
+                // console.log(data?.specifications)
+                // console.log(data?.key_features)
             }
         } catch (error) {
             console.error('Error:', error.message);
@@ -109,6 +113,8 @@ const ProductDetails = () => {
     //         thumbnail: "https://picsum.photos/id/1019/250/150/"
     //     }
     // ]
+
+
     const imges = product?.image?.map((image) => ({
         original: `${imageUrl}${image.replace(/\s/g, '%20')}`,
         thumbnail: `${imageUrl}${image.replace(/\s/g, '%20')}`,
@@ -293,7 +299,45 @@ const ProductDetails = () => {
             }
             <div style={{ display: "none" }}>{<ProductInvoice key_features={key_features}
                 specification={specification} product={product} ref={componentRef} />}</div>
-<ImageSection/>
+
+            <div className="">
+                <div className="row">
+
+                    {
+                        product.type !== "Cassette AC" && product.type !== "Floor Standing" ?
+                            (
+                                <>
+                                    <div className="col-md-12 mt-4 p-0">
+                                        <div>
+                                            <img
+                                                src={turboColl}
+                                                alt="Second Image"
+                                                className="img-fluid" />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-12 m-0 p-0">
+                                        <div>
+                                            <img
+                                                src={wallType}
+                                                alt="Second Image"
+                                                className="img-fluid" />
+                                        </div>
+                                    </div>
+                                </>
+                            ) : null
+                    }
+
+                    <div className="col-md-12 m-0 p-0">
+                        <div>
+                            <img
+                                src='/images/Web 1920 – 1.png'
+                                alt="Second Image"
+                                className="img-fluid" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </>
     )
 }

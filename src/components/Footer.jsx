@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -15,7 +16,7 @@ function Footer() {
                   target="_blank">
                   <i className="fa fa-map-marker" aria-hidden="true" />
                   <span>
-                    Amman Street - INDUSTRIAL AREA 2 - Ajman - United Arab Emirates
+                    Amman Street - INDUSTRIAL AREA 2 - Ajman - Dubai
                   </span>
                 </a>
                 <a href="tel:+971505735436">
@@ -36,14 +37,14 @@ function Footer() {
               <a href="https://www.facebook.com/profile.php?id=61554996632615&mibextid=9R9pXO" target="_blank">
                 <i className="fa fa-facebook" aria-hidden="true" />
               </a>
-              <a href="https://www.youtube.com/channel/UCpyCCBRs_mJgmPZThPY-MMA" target="_blank">
-                <i className="fa fa-youtube" aria-hidden="true" style={{ color: "white" }} />
+              <a href="https://www.instagram.com/diakool_airconditioners/" target="_blank">
+                <i className="fa fa-instagram" aria-hidden="true" />
               </a>
               <a href="https://www.linkedin.com/in/diakool-air-conditioners-b206072a2/" target="_blank">
                 <i className="fa fa-linkedin" aria-hidden="true" />
               </a>
-              <a href="https://www.instagram.com/diakool_airconditioners/" target="_blank">
-                <i className="fa fa-instagram" aria-hidden="true" />
+              <a href="https://www.youtube.com/channel/UCpyCCBRs_mJgmPZThPY-MMA" target="_blank">
+                <i className="fa fa-youtube" aria-hidden="true" style={{ color: "white" }} />
               </a>
             </div>
           </div>
@@ -53,7 +54,7 @@ function Footer() {
                 About
               </h4>
               <p>
-              In Diakool our prime objective is to provide you quality product in affordable prices along with advance technology.
+                In Diakool our prime objective is to provide you quality product in affordable prices along with advance technology.
               </p>
             </div>
           </div>
@@ -63,21 +64,18 @@ function Footer() {
                 Links
               </h4>
               <div className="footer_links">
-                <a className="active" href="index.html">
+                <Link className="active" to="/">
                   Home
-                </a>
-                <a className href="about.html">
+                </Link>
+                <Link className to="/about">
                   About
-                </a>
-                <a className href="departments.html">
-                  Departments
-                </a>
-                <a className href="doctors.html">
-                  Doctors
-                </a>
-                <a className href="contact.html">
+                </Link>
+                <Link className to="/productlisting">
+                  All Products
+                </Link>
+                <Link className to="/contact">
                   Contact Us
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -96,7 +94,7 @@ function Footer() {
         <div className="footer-info">
           <p>
             © <span id="displayYear" /> 2014 Copyright All Rights Reserved By
-            <a href="https://html.design/">Diacool</a>
+            <a href="https://html.design/">DiaKool</a>
           </p>
         </div>
       </div>
