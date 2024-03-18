@@ -31,7 +31,8 @@ const ProductListing = () => {
         myHeaders.append("Content-Type", "application/json");
 
         const raw = JSON.stringify({
-            "type": selectedCategory ? [selectedCategory] : accCategories,
+            // "type": selectedCategory ? [selectedCategory] : accCategories,
+            "type":  accCategories,
             "capacity": capacityBTU,
             "compressor": compressor
         });
@@ -93,7 +94,7 @@ const ProductListing = () => {
                                     <li className="product_type" key={index}>
                                         <input className="pf-types form-check-input" type="checkbox"
                                             value={item}
-                                            checked={item === data}
+                                            // checked={accCategories.includes(item)} // Check if the item is included in the state
                                             id={item}
                                             onChange={(e) => {
                                                 const checkedValue = e.target.value;

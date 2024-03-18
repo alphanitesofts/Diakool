@@ -1,6 +1,8 @@
 import React from "react";
 import '../ChooseUs/ChooseUs.css'
 import Ac from '../../Image/AC.jpg'
+import image from '../../Image/sas.jpg'
+
 function ChooseUs() {
   return (
     <div className="container" style={{ marginBottom: "100px", marginTop:"100px" }}>
@@ -30,7 +32,7 @@ function ChooseUs() {
         </div>
         <div className="col-lg-4 d-none d-lg-block">
           <div className="why-choose-center-image">
-            <img src={Ac} style={{ width: '350px', height: '350px' }} alt="..." className="rounded-circle" />
+            <img src={image} style={{ width: '350px', height: '350px' }} alt="..." className="rounded-circle" />
           </div>
         </div>
         <div className="col-sm-6 col-lg-4">

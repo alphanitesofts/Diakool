@@ -177,11 +177,11 @@ const Specification = ({ specification, key_features }) => {
                                     <div className='col-lg-12'>
                                         <div className="card" style={{ backgroundImage: `url(${image})`, backgroundSize: 'cover', backgroundPosition: 'center', borderRadius: "10px" }}>
                                             <div className="card-body">
-                                                <h5 className="card-title text-white" style={{ marginTop: "250px", fontWeight:800 }}>BUY NOW</h5>
-                                                <p className="card-text text-white" style={{  fontWeight:800 }}>AL BAHRI WAREHOUSE # 16 <br />
-                                                AL ASAYEL STREET <br />
-                                                AL QUOZ IND 2 – DUBAI – UAE</p>
-                                                <p className="card-text text-white" style={{  fontWeight:800 }}>Amman Street - Industrial Area 2 - Anjman</p>
+                                                <h5 className="card-title text-white" style={{ marginTop: "250px", fontWeight: 800 }}>BUY NOW</h5>
+                                                <p className="card-text text-white" style={{ fontWeight: 800 }}>AL BAHRI WAREHOUSE # 16 <br />
+                                                    AL ASAYEL STREET <br />
+                                                    AL QUOZ IND 2 – DUBAI – UAE</p>
+                                                <p className="card-text text-white" style={{ fontWeight: 800 }}>Amman Street - Industrial Area 2 - Anjman</p>
                                                 <div className="d-flex">
                                                     <a className='mx-1' href="https://wa.me/+971505735436?text=Hello%20there,%20I%20want%20to%20buy%20your%20product" target="_blank">
                                                         <img src="/images/whatsapp.png" className="img-fluid lazyload" style={{ height: "35px" }} alt="whatsapp" />
