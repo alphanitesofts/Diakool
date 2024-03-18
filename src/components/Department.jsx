@@ -49,12 +49,12 @@ function Department() {
                 return (
                   <>
                     <div className="col-md-3" key={index}>
-                      <Link to='/productlisting' state={{item: items.type}} className="box ">
+                      <Link to='/productlisting' style={{ textDecoration: "none" }} state={{ item: items.type }} className="box ">
                         <div className="img-box">
                           <img src={items.image} alt />
                         </div>
                         <div className="detail-box">
-                          <h5>{items.type}</h5>
+                          <h5 style={{ color: "#1c3f94"}}>{items.type}</h5>
                           {/* <p>{items.description}</p> */}
                         </div>
                       </Link>
@@ -71,7 +71,7 @@ function Department() {
           </div>
         </div>
       </div>
-      <div className="col-md-12 p-0" style={{marginTop:"65px"}}>
+      <div className="col-md-12 p-0" style={{ marginTop: "65px" }}>
         <div>
           <img
             src={turboCool}

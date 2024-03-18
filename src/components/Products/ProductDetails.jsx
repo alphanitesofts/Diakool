@@ -271,14 +271,16 @@ const ProductDetails = () => {
                                             </ul>
                                         </div>
                                         <div className="d-block">
-                                            <div className="btn-amazon">
+                                            {/* <div className="btn-amazon">
                                                 <a href="https://wa.me/+971505735436?text=Hello%20there,%20I%20want%20to%20buy%20your%20product" target="_blank">
                                                     <h6>Buy now on</h6>
                                                     <img src="/images/whatsapp.png" className="img-fluid lazyload" alt="buy on whatsapp" />
                                                     <strong >WhatsApp</strong>
                                                     <i className="fa fa-angle-right"></i>
                                                 </a>
-                                            </div>
+                                            </div> */}
+
+                                            <button className='btn btn-primary w-75 p-2'>Buy Now On  Whatsapp <span ><img style={{width:"20px", marginTop:"2px"}} src="/images/whatsapp.png" alt="" /></span></button>
                                         </div>
                                         <div className="d-none">
                                             <div className="btn-where">

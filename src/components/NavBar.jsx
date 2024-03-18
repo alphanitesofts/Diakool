@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Diakool from '../Image/Diakool.png'
 import '../../src/App.css';
+import facebook from '../Image/facebook.png';
+import instagram from '../Image/instagram.png';
+import youtube from '../Image/youtube-logo.webp'
+import linkedin from '../Image/linkedIn.png'
 
 function NavBar() {
   const [showSearchBar, setShowSearchBar] = useState(false);
@@ -24,15 +28,15 @@ function NavBar() {
           <div className="col-12 text-right pt-1 pb-1 ">
             {/* Add your social icons here */}
             <a href="https://www.facebook.com/profile.php?id=61554996632615&mibextid=9R9pXO" target="_blank" >
-              <i className="fa fa-facebook mx-2" style={{ color: "white", fontSize: "22px" }}></i>
+              <img src={facebook} className="mx-2" style={{ color: "white", height: "22px" }} />
             </a>
             <a href="https://www.instagram.com/diakool_airconditioners/ " target="_blank">
-              <i className="fa fa-instagram mx-2" style={{ color: "white", fontSize: "22px" }}></i></a>
+              <img src={instagram} className=" mx-2" style={{ color: "white", height: "22px" }} /></a>
             <a href="https://www.youtube.com/channel/UCpyCCBRs_mJgmPZThPY-MMA" target="_blank">
-              <i className="fa fa-youtube mx-2" aria-hidden="true" style={{ color: "white", fontSize: "22px" }} />
+              <img src={youtube} className=" mx-2" aria-hidden="true" style={{ color: "white", height: "27px" }} />
             </a>
             <a href="https://www.linkedin.com/in/diakool-air-conditioners-b206072a2/" target="_blank">
-              <i className="fa fa-linkedin mx-2" aria-hidden="true" style={{ color: "white", fontSize: "22px" }} />
+              <img src={linkedin} className="mx-2" aria-hidden="true" style={{ color: "white", height: "22px" }} />
             </a>
           </div>
         </div>

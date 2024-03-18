@@ -97,7 +97,7 @@ const Specification = ({ specification, key_features }) => {
                             </div>
 
                             <div className={selected === "Buy" ? "tab-pane fade active show support" : "tab-pane fade support"} role="tabpanel" >
-                              {/*   <h4>KEY OUTLETS</h4>
+                                {/*   <h4>KEY OUTLETS</h4>
                                 <div className="col-keyout">
                                     <div className="col-key">
                                         <ul>
@@ -136,16 +136,18 @@ const Specification = ({ specification, key_features }) => {
                                 </div> */}
 
 
-                                <article className="cardx">
-                                    <img className="cardx__background" src={image} alt="Photo of Cartagena's cathedral at the background and some colonial style houses" width={1920} height={2193} />
+                                {/* <article className="cardx">
+                                    <img className="cardx__background" style={{ backgroundImage: `url(${image})`, backgroundSize: 'cover', backgroundPosition: 'center' }} alt="Photo of Cartagena's cathedral at the background and some colonial style houses" width={1920} height={2193} />
                                     <div className="cardx__content | flow">
                                         <div className="cardx__content--container | flow">
                                             <h2 className="cardx__title text-white" style={{ marginTop: "50px" }}>BUY NOW</h2>
-                                            <p className="cardx__description" style={{ color: "white", fontWeight:800 }}>
-                                                AL BAHRI WAREHOUSE # 16 AL ASAYEL STREET AL QUOZ IND 2 – DUBAI – UAE
+                                            <p className="cardx__description" style={{ color: "white", fontWeight: 800 }}>
+                                                AL BAHRI WAREHOUSE # 16
+                                                AL ASAYEL STREET
+                                                AL QUOZ IND 2 – DUBAI – UAE
 
                                             </p>
-                                            <p className="cardx__description mt-0" style={{ color: "white", fontWeight:800 }}>
+                                            <p className="cardx__description mt-0" style={{ color: "white", fontWeight: 800 }}>
                                                 Amman Street - Industrial Area 2 - Anjman
                                             </p>
                                         </div>
@@ -167,7 +169,41 @@ const Specification = ({ specification, key_features }) => {
                                             </a>
                                         </div>
                                     </div>
-                                </article>
+                                </article> */}
+
+
+
+                                <div className='row'>
+                                    <div className='col-lg-12'>
+                                        <div className="card" style={{ backgroundImage: `url(${image})`, backgroundSize: 'cover', backgroundPosition: 'center', borderRadius: "10px" }}>
+                                            <div className="card-body">
+                                                <h5 className="card-title text-white" style={{ marginTop: "250px", fontWeight:800 }}>BUY NOW</h5>
+                                                <p className="card-text text-white" style={{  fontWeight:800 }}>AL BAHRI WAREHOUSE # 16 <br />
+                                                AL ASAYEL STREET <br />
+                                                AL QUOZ IND 2 – DUBAI – UAE</p>
+                                                <p className="card-text text-white" style={{  fontWeight:800 }}>Amman Street - Industrial Area 2 - Anjman</p>
+                                                <div className="d-flex">
+                                                    <a className='mx-1' href="https://wa.me/+971505735436?text=Hello%20there,%20I%20want%20to%20buy%20your%20product" target="_blank">
+                                                        <img src="/images/whatsapp.png" className="img-fluid lazyload" style={{ height: "35px" }} alt="whatsapp" />
+                                                    </a>
+                                                    <a className='mx-1' href="https://www.facebook.com/profile.php?id=61554996632615&mibextid=9R9pXO" target="_blank">
+                                                        <img src="/images/facebook.png" className="img-fluid lazyload" style={{ height: "35px" }} alt="facebook" />
+                                                    </a>
+                                                    <a className='mx-1' href="https://www.youtube.com/channel/UCpyCCBRs_mJgmPZThPY-MMA" target="_blank">
+                                                        <img src="/images/youtube-logo.webp" className="img-fluid lazyload" style={{ height: "35px" }} alt="facebook" />
+                                                    </a>
+                                                    <a className='mx-1' href="https://www.instagram.com/diakool_airconditioners/" target="_blank">
+                                                        <img src="/images/instagram.png" className="img-fluid lazyload" style={{ height: "35px" }} alt="facebook" />
+                                                    </a>
+                                                    <a className='mx-1' href="https://www.linkedin.com/in/diakool-air-conditioners-b206072a2/" target="_blank">
+                                                        <img src="/images/linkedIn.png" className="img-fluid lazyload" style={{ height: "35px" }} alt="facebook" />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
 
                             </div>
                         </div>

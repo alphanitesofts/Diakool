@@ -16,7 +16,9 @@ function Footer() {
                   target="_blank">
                   <i className="fa fa-map-marker" aria-hidden="true" />
                   <span>
-                    Amman Street - INDUSTRIAL AREA 2 - Ajman - Dubai
+                    AL BAHRI WAREHOUSE # 16 <br />
+                    AL ASAYEL STREET <br />
+                    AL QUOZ IND 2 – DUBAI – UAE
                   </span>
                 </a>
                 <a href="tel:+971505735436">
@@ -93,7 +95,7 @@ function Footer() {
         </div>
         <div className="footer-info">
           <p>
-            © <span id="displayYear" /> 2014 Copyright All Rights Reserved By
+            © <span id="displayYear" /> 2022 Copyright All Rights Reserved By <a href="">Alphanites Soft</a>&nbsp;
             <a href="https://html.design/">DiaKool</a>
           </p>
         </div>

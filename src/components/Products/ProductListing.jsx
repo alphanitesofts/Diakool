@@ -7,7 +7,7 @@ const imageUrl = 'https://supercoolacimages.alphanitesofts.net/';
 
 const ProductListing = () => {
 
-    const acCategories = ['Split AC', 'Window AC', 'Wall Mounted', 'Floor Standing', 'Cassette AC', 'Ducted AC'];
+    const acCategories = ['Split AC', 'Window AC', 'Floor Standing', 'Cassette AC', 'Ducted AC'];
     const CapacityBTU = ['12000 BTUs', '18000 BTUs', '24000 BTUs', '30000 BTUs', '36000 BTUs', '48000 BTUs', '60000 BTUs'];
     const compressorType = ['Scroll', 'Rotary', 'Piston'];
 
@@ -93,7 +93,7 @@ const ProductListing = () => {
                                     <li className="product_type" key={index}>
                                         <input className="pf-types form-check-input" type="checkbox"
                                             value={item}
-                                            // checked={item === data}
+                                            checked={item === data}
                                             id={item}
                                             onChange={(e) => {
                                                 const checkedValue = e.target.value;
