@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './shopStyle.css';
 import { Link, useLocation } from 'react-router-dom';
 import fetchData from './AdvanceSearchSlice';
+import nodata from '../../Image/no_data.png'
 
 const imageUrl = 'https://supercoolacimages.alphanitesofts.net/';
 
@@ -171,9 +172,9 @@ const ProductListing = () => {
                                         </div>
                                     </>
                                 ) : categories.length === 0 ? (
-                                    <div className="no-items-left">
-                                        No Such Item
-                                    </div>
+                                    <div className="d-flex justify-content-center mx-auto align-items-center vh-100">
+                                    <img className='img-fluid' style={{ height: "600px" }} src={nodata} alt="" />
+                                </div>
                                 ) : categories.map((item, index) => (
                                     <div className="product-box" key={index}>
                                         <div className="product-box-top">

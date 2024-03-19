@@ -2,7 +2,9 @@ import React, { useEffect } from 'react'
 import { useState } from 'react';
 import FetchSpecifications from './FetchSpecification';
 import FetchKeyFeatures from './FetchKeyFeatures';
+
 import './CardStyles.css'
+
 import image from '../../Image/banner1.jpg'
 
 const imageUrl = 'https://supercoolacimages.alphanitesofts.net/';
@@ -97,6 +99,7 @@ const Specification = ({ specification, key_features }) => {
                             </div>
 
                             <div className={selected === "Buy" ? "tab-pane fade active show support" : "tab-pane fade support"} role="tabpanel" >
+
                                 {/*   <h4>KEY OUTLETS</h4>
                                 <div className="col-keyout">
                                     <div className="col-key">
@@ -111,7 +114,8 @@ const Specification = ({ specification, key_features }) => {
                                         </ul>
                                     </div>
                                 </div> */}
-                                <h4 className='mb-5'>BUY ONLINE</h4>
+                                {/* <h4 className='mb-5'>BUY ONLINE</h4> */}
+
                                 {/* <div className="online-flex">
                                     <div className="online-col">
                                         <img src="/images/whatsapp.png" className="img-fluid lazyload" alt="whatsapp" />
@@ -173,7 +177,7 @@ const Specification = ({ specification, key_features }) => {
 
 
 
-                                <div className='row'>
+                                {/* <div className='row'>
                                     <div className='col-lg-12'>
                                         <div className="card" style={{ backgroundImage: `url(${image})`, backgroundSize: 'cover', backgroundPosition: 'center', borderRadius: "10px" }}>
                                             <div className="card-body">
@@ -203,7 +207,34 @@ const Specification = ({ specification, key_features }) => {
                                         </div>
 
                                     </div>
+                                </div> */}
+
+
+                                <div className="social-container">
+                                    <ul className="social-icons">
+                                        <h5 className="card-title text-dark" >BUY NOW</h5>
+                                        <p className="card-text text-dark" >AL BAHRI WAREHOUSE # 16 <br />
+                                            AL ASAYEL STREET <br />
+                                            AL QUOZ IND 2 – DUBAI – UAE</p>
+                                        <p className="card-text text-dark" >Amman Street - Industrial Area 2 - Anjman</p>
+
+                                        <li><a href="#"><i className="fa fa-facebook" /></a></li>
+                                        <li><a href="#"><i className="fa fa-instagram" /></a></li>
+                                        <li><a href="#"><i className="fa fa-youtube" /></a></li>
+                                        <li><a href="#"><i className="fa fa-linkedin" /></a></li>
+                                    </ul>
                                 </div>
+
+
+
+                                <ul className='icons-body'>
+                                    <li className='icons-list'><a href="#"><i className="fab fa  fa-facebook" aria-hidden="true" /></a></li>
+                                    <li className='icons-list'><a href="#"><i className="fab fa fa-twitter" aria-hidden="true" /></a></li>
+                                    <li className='icons-list'><a href="#"><i className="fab fa fa-google-plus" aria-hidden="true" /></a></li>
+                                    <li className='icons-list'><a href="#"><i className="fab fa fa-linkedin" aria-hidden="true" /></a></li>
+                                    <li className='icons-list'><a href="#"><i className="fab fa fa-instagram" aria-hidden="true" /></a></li>
+                                </ul>
+
 
                             </div>
                         </div>

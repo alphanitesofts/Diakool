@@ -94,9 +94,12 @@ function Footer() {
           </div>
         </div>
         <div className="footer-info">
-          <p>
-            © <span id="displayYear" /> 2022 Copyright All Rights Reserved By <a href="">Alphanites Soft</a>&nbsp;
-            <a href="https://html.design/">DiaKool</a>
+          <p className="pt-2 pb-1">
+            © <span id="displayYear"/>2022 Copyright All Rights Reserved By&nbsp;
+            <a href="https://diakool.com/">DiaKool</a>
+          </p>
+          <p className="p-0">
+            <span id="displayYear" /> Developed by<a href="https://alphanitesofts.com/">&nbsp;Alphanites Soft</a>
           </p>
         </div>
       </div>

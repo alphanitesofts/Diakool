@@ -111,11 +111,11 @@ function NavBar() {
                       All Products
                     </Link>
                   </li>
-                  <li className="nav-item">
+                  {/* <li className="nav-item">
                     <Link className="nav-link" to="specialities">
                       Features
                     </Link>
-                  </li>
+                  </li> */}
                   <li className="nav-item">
                     <Link className="nav-link" to="blogs">
                       Blogs
