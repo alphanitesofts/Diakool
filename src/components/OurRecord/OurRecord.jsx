@@ -1,6 +1,9 @@
 import React from "react";
 import '../OurRecord/OurRecord.css'
 import since from '../../Image/since.jpg'
+import ducted from '../../Image/AC-compressed.webp'
+
+
 function OurRecord() {
   return (
     <section className="section about-section gray-bg" id="about">
@@ -21,53 +24,15 @@ function OurRecord() {
                   schedules for your air conditioner?
                  Wi-Fi-enabled ACs are far more adaptable than typical ACs.
                 
-              {/* <div className="row about-list">
-                <div className="col-md-8">
-                  {/* <div className="media">
-                <label>Birthday</label>
-                <p>4th april 1998</p>
-              </div> 
-                  {/* <div className="media">
-                <label>Age</label>
-                <p>22 Yr</p>
-              </div> 
-                  {/* <div className="media">
-                <label>Residence</label>
-                <p>Canada</p>
-              </div> 
-                  <div className="media">
-                    <label>Address:  {" "}</label>
-                    <p>{" "}Amman Street - INDUSTRIAL AREA 2 - Ajman - United Arab Emirates</p>
-                  </div>
-                  <div className="media">
-                    <label>E-mail </label>
-                    <p>Diakoolairconditioners@gmail.com</p>
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className="media">
-                    <label>Phone</label>
-                    <p>+971505735436</p>
-                  </div>
-                  {/* <div className="media">
-                <label>Skype</label>
-                <p>skype.0404</p>
-              </div> 
-                  {/* <div className="media">
-                <label>Freelance</label>
-                <p>Available</p>
-              </div> 
-                </div>
-              </div> */}
             </div>
           </div>
           <div className="col-lg-6">
             <div className="about-avatar">
-              <img src='/images/wifipic.jpg' title alt />
+              <img src={ducted} className="img-fluid" title alt />
             </div>
           </div>
         </div>
-        <div className="counter">
+        <div className="counter mt-5">
           <div className="row">
             <div className="col-6 col-lg-3">
               <div className="count-data text-center">

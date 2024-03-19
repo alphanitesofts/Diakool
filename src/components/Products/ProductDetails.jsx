@@ -4,13 +4,16 @@ import Specification from './Specification';
 import FetchAcDetails from './FetchAcDetails';
 import { useParams } from 'react-router-dom';
 import { useReactToPrint } from 'react-to-print';
-// import JSZip from 'jszip';
-// import { saveAs } from 'file-saver';
 import ProductInvoice from "./ProductInvoice";
+
 import FetchKeyFeatures from './FetchKeyFeatures';
 import FetchSpecifications from './FetchSpecification';
-import ImageSection from '../ImageSections/ImageSection';
+
+import turboColl from '../../Image/Turbo Cool.jpg'
+import wallType from '../../Image/Wall Type Spec.jpg'
+
 const imageUrl = 'https://supercoolacimages.alphanitesofts.net/';
+
 
 const ProductDetails = () => {
     const { productId } = useParams();
@@ -18,16 +21,15 @@ const ProductDetails = () => {
     const [position, setPosition] = useState({ x: 0, y: 0 });
     const [showMagnifier, setShowMagnifier] = useState(false);
     const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
-    const [lightboxIsOpen, setLightboxIsOpen] = useState(false);
     const [photoIndex, setPhotoIndex] = useState(0);
-    const [showInvoice, setShowInvoice] = useState(false);
     const [specification, setSpecification] = useState('');
     const [key_features, setKey_features] = useState('');
     const componentRef = useRef();
+
     const openLightbox = (index) => {
         setPhotoIndex(index);
-        setLightboxIsOpen(true);
     };
+
     async function fetchDataAndProcess() {
         try {
             const data = await FetchAcDetails(productId);
@@ -35,45 +37,19 @@ const ProductDetails = () => {
                 setProduct(data?.data);
                 setSpecification(data?.specifications);
                 setKey_features(data?.key_features);
-                console.log(data?.specifications)
-                console.log(data?.key_features)
+                // console.log(data?.specifications)
+                // console.log(data?.key_features)
             }
         } catch (error) {
             console.error('Error:', error.message);
         }
     }
 
-    // async function FetchSpecification() {
-    //     try {
-    //         const data = await FetchSpecifications(productId);
-    //         if (data !== null) {
-    //             setSpecification(data?.Specification);
-    //             // console.log(data?.Specification)
-    //         }
-    //     } catch (error) {
-    //         console.error('Error:', error.message);
-    //     }
-    // }
-    // async function FetchKeyFeature() {
-    //     try {
-    //         const data = await FetchKeyFeatures(productId);
-    //         if (data !== null) {
-    //             setKey_features(data?.key_features);
-    //             // console.log(data?.key_features);
-    //         }
-    //     } catch (error) {
-    //         console.error('Error:', error.message);
-    //     }
-    // }
-
-
     useEffect(() => {
         fetchDataAndProcess();
         // FetchSpecification();
         // FetchKeyFeature();
     }, []);
-
-
 
     const handleMouseHover = (e) => {
         const container = e.currentTarget;
@@ -90,25 +66,6 @@ const ProductDetails = () => {
         }
     };
 
-    // if (productLoading) {
-    //     return <div>Loading...</div>;
-    // } else if (productError) {
-    //     return <div>Error...</div>;
-    // }
-    // const imges = [
-    //     {
-    //         original: "https://picsum.photos/id/1018/1000/600/",
-    //         thumbnail: "https://picsum.photos/id/1018/250/150/"
-    //     },
-    //     {
-    //         original: "https://picsum.photos/id/1015/1000/600/",
-    //         thumbnail: "https://picsum.photos/id/1015/250/150/"
-    //     },
-    //     {
-    //         original: "https://picsum.photos/id/1019/1000/600/",
-    //         thumbnail: "https://picsum.photos/id/1019/250/150/"
-    //     }
-    // ]
     const imges = product?.image?.map((image) => ({
         original: `${imageUrl}${image.replace(/\s/g, '%20')}`,
         thumbnail: `${imageUrl}${image.replace(/\s/g, '%20')}`,
@@ -120,6 +77,7 @@ const ProductDetails = () => {
         content: () => componentRef.current,
 
     });
+
     const handleDownloadImages = () => {
         // console.log(originals[photoIndex]);
         if (product && product.image) {
@@ -253,7 +211,7 @@ const ProductDetails = () => {
                                 {product &&
                                     <div className="product-descrptions">
                                         <div className="product-name" id='printablediv'>
-                                            <h2 className="product-code">SGS372HE</h2>
+                                            <h2 className="product-code">{product?.model_no}</h2>
                                             <h1>{product?.name}</h1>
                                         </div>
                                         <div className="key-feature-des">
@@ -265,14 +223,22 @@ const ProductDetails = () => {
                                             </ul>
                                         </div>
                                         <div className="d-block">
-                                            <div className="btn-amazon">
+                                            {/* <div className="btn-amazon">
                                                 <a href="https://wa.me/+971505735436?text=Hello%20there,%20I%20want%20to%20buy%20your%20product" target="_blank">
                                                     <h6>Buy now on</h6>
                                                     <img src="/images/whatsapp.png" className="img-fluid lazyload" alt="buy on whatsapp" />
                                                     <strong >WhatsApp</strong>
                                                     <i className="fa fa-angle-right"></i>
                                                 </a>
+                                            </div> */}
+                                            <div className="d-flex align-items-start" style={{ cursor: "pointer" }}>
+                                                <div className="product-box-meta" >
+                                                    <div className="product-btn">
+                                                        <a href="https://wa.me/+971505735436?text=Hello%20there,%20I%20want%20to%20buy%20your%20product" target="_blank">Buy Now On  Whatsapp <span ><img style={{ width: "20px", marginTop: "2px" }} src="/images/whatsapp.png" alt="" /></span></a>
+                                                    </div>
+                                                </div>
                                             </div>
+                                            {/* <button className='btn btn-primary w-75 p-2'></button> */}
                                         </div>
                                         <div className="d-none">
                                             <div className="btn-where">
@@ -293,7 +259,55 @@ const ProductDetails = () => {
             }
             <div style={{ display: "none" }}>{<ProductInvoice key_features={key_features}
                 specification={specification} product={product} ref={componentRef} />}</div>
-<ImageSection/>
+
+            <div className="">
+                <div className="row">
+
+                    {
+                        product.type !== "Cassette AC" && product.type !== "Floor Standing" ?
+                            (
+                                <>
+                                    <div className="col-md-12 mt-4 p-0">
+                                        <div>
+                                            <img
+                                                src={turboColl}
+                                                alt="Second Image"
+                                                className="img-fluid" />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-12 m-0 p-0">
+                                        <div>
+                                            <img
+                                                src={wallType}
+                                                alt="Second Image"
+                                                className="img-fluid" />
+                                        </div>
+                                    </div>
+                                </>
+                            ) : null
+                    }
+
+
+                    {
+                        product.type === "Cassette AC" && product.type === "Floor Standing" ?
+                            (
+                                <>
+                                    <div className="col-md-12 m-0 p-0">
+                                        <div>
+                                            <img
+                                                src='/images/Web 1920 – 1.png'
+                                                alt="Second Image"
+                                                className="img-fluid" />
+                                        </div>
+                                    </div>
+                                </>
+                            ) : null
+                    }
+
+
+
+                </div>
+            </div>
         </>
     )
 }

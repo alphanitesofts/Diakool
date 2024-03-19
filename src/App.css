@@ -101,7 +101,6 @@ ul.i-list.medium .icon {
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.28);
   position: relative;
   z-index: 1;
-
 }
 
 ul.i-list.medium .icon i.fa {
@@ -254,7 +253,7 @@ separator,
 }
 
 /* BLOGS BLOGS BLOGS BLOGS BLOGS CSS */
-    /* ============ >  BLOGS CSS DOWN HERE  < ================= */
+/* ============ >  BLOGS CSS DOWN HERE  < ================= */
 
 body {
   margin-top: 20px;
@@ -974,3 +973,8 @@ img {
     border-left: 0.3em solid;
   }
 }
+
+/* ABOUT US ANIMATION */
+/* style={{ height: "40px",  filter: "invert(100%)", position: "absolute", left: "80%", top: "0%", transform: "translateY(-50%)" }} */
+
+

@@ -2,39 +2,16 @@ import React, { useEffect } from 'react'
 import { useState } from 'react';
 import FetchSpecifications from './FetchSpecification';
 import FetchKeyFeatures from './FetchKeyFeatures';
-const imageUrl = 'https://supercoolacimages.alphanitesofts.net/';
-const Specification = ({ specification, key_features }) => {
-    const [selected, setSelected] = useState("Keys")
-    // console.log(specification, "spec")
-    // console.log(key_features, 'key')
-    // const [specification, setSpecification] = useState('');
-    // const [key_features, setKey_features] = useState('');
-    // async function FetchSpecification() {
-    //     try {
-    //         const data = await FetchSpecifications(product.id);
-    //         if (data !== null) {
-    //             setSpecification(data?.Specification);
-    //         }
-    //     } catch (error) {
-    //         console.error('Error:', error.message);
-    //     }
-    // }
-    // async function FetchKeyFeature() {
-    //     try {
-    //         const data = await FetchKeyFeatures(product.id);
-    //         if (data !== null) {
-    //             setKey_features(data?.key_features);
-    //             // console.log(data);
-    //         }
-    //     } catch (error) {
-    //         console.error('Error:', error.message);
-    //     }
-    // }
 
-    // useEffect(() => {
-    //     FetchSpecification();
-    //     FetchKeyFeature();
-    // }, []);
+import './CardStyles.css'
+
+import image from '../../Image/banner1.jpg'
+
+const imageUrl = 'https://supercoolacimages.alphanitesofts.net/';
+
+const Specification = ({ specification, key_features }) => {
+
+    const [selected, setSelected] = useState("Keys");
 
     return (
         <section className="specification-section" >
@@ -49,7 +26,7 @@ const Specification = ({ specification, key_features }) => {
                                 <button
                                     onClick={() => setSelected("Specifications")}
                                     className={selected === "Specifications" ? "nav-link active" : "nav-link"} data-bs-toggle="tab" type="button" role="tab">
-                                        {console.log("Rendering Specifications tab content")} Specifications</button>
+                                    {console.log("Rendering Specifications tab content")} Specifications</button>
                                 <button
                                     onClick={() => setSelected("Support")}
                                     className={selected === "Support" ? "nav-link active support" : "nav-link support"} data-bs-toggle="tab" type="button" role="tab" >Support</button>
@@ -122,29 +99,24 @@ const Specification = ({ specification, key_features }) => {
                             </div>
 
                             <div className={selected === "Buy" ? "tab-pane fade active show support" : "tab-pane fade support"} role="tabpanel" >
-                                <h4>KEY OUTLETS</h4>
+
+                                {/*   <h4>KEY OUTLETS</h4>
                                 <div className="col-keyout">
                                     <div className="col-key">
                                         <ul>
                                             <li>AL BAHRI WAREHOUSE # 16 AL ASAYEL STREET AL QUOZ IND 2 – DUBAI – UAE</li>
                                         </ul>
                                     </div>
-                                    <div className="col-key">
-                                        {/* <ul>
-                                            <li>KM Trading</li>
-                                            <li>Lulu</li>
-                                            <li>Nesto</li>
-                                            <li>Safeer</li>
-                                        </ul> */}
-                                    </div>
+                                 
                                     <div className="col-key">
                                         <ul>
                                             <li>Amman Street - Industrial Area 2 - Anjman</li>
                                         </ul>
                                     </div>
-                                </div>
-                                <h4>BUY ONLINE</h4>
-                                <div className="online-flex">
+                                </div> */}
+                                {/* <h4 className='mb-5'>BUY ONLINE</h4> */}
+
+                                {/* <div className="online-flex">
                                     <div className="online-col">
                                         <img src="/images/whatsapp.png" className="img-fluid lazyload" alt="whatsapp" />
                                         <a href="https://wa.me/+971505735436?text=Hello%20there,%20I%20want%20to%20buy%20your%20product" target="_blank">Buy Now</a>
@@ -165,153 +137,105 @@ const Specification = ({ specification, key_features }) => {
                                         <img src="/images/linkedIn.png" className="img-fluid lazyload" alt="facebook" />
                                         <a href="https://www.linkedin.com/in/diakool-air-conditioners-b206072a2/" target="_blank">Buy Now</a>
                                     </div>
+                                </div> */}
+
+
+                                {/* <article className="cardx">
+                                    <img className="cardx__background" style={{ backgroundImage: `url(${image})`, backgroundSize: 'cover', backgroundPosition: 'center' }} alt="Photo of Cartagena's cathedral at the background and some colonial style houses" width={1920} height={2193} />
+                                    <div className="cardx__content | flow">
+                                        <div className="cardx__content--container | flow">
+                                            <h2 className="cardx__title text-white" style={{ marginTop: "50px" }}>BUY NOW</h2>
+                                            <p className="cardx__description" style={{ color: "white", fontWeight: 800 }}>
+                                                AL BAHRI WAREHOUSE # 16
+                                                AL ASAYEL STREET
+                                                AL QUOZ IND 2 – DUBAI – UAE
+
+                                            </p>
+                                            <p className="cardx__description mt-0" style={{ color: "white", fontWeight: 800 }}>
+                                                Amman Street - Industrial Area 2 - Anjman
+                                            </p>
+                                        </div>
+                                        <div className="d-flex">
+                                            <a className='mx-1' href="https://wa.me/+971505735436?text=Hello%20there,%20I%20want%20to%20buy%20your%20product" target="_blank">
+                                                <img src="/images/whatsapp.png" className="img-fluid lazyload" style={{ height: "35px" }} alt="whatsapp" />
+                                            </a>
+                                            <a className='mx-1' href="https://www.facebook.com/profile.php?id=61554996632615&mibextid=9R9pXO" target="_blank">
+                                                <img src="/images/facebook.png" className="img-fluid lazyload" style={{ height: "35px" }} alt="facebook" />
+                                            </a>
+                                            <a className='mx-1' href="https://www.youtube.com/channel/UCpyCCBRs_mJgmPZThPY-MMA" target="_blank">
+                                                <img src="/images/youtube-logo.webp" className="img-fluid lazyload" style={{ height: "35px" }} alt="facebook" />
+                                            </a>
+                                            <a className='mx-1' href="https://www.instagram.com/diakool_airconditioners/" target="_blank">
+                                                <img src="/images/instagram.png" className="img-fluid lazyload" style={{ height: "35px" }} alt="facebook" />
+                                            </a>
+                                            <a className='mx-1' href="https://www.linkedin.com/in/diakool-air-conditioners-b206072a2/" target="_blank">
+                                                <img src="/images/linkedIn.png" className="img-fluid lazyload" style={{ height: "35px" }} alt="facebook" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                </article> */}
+
+
+
+                                {/* <div className='row'>
+                                    <div className='col-lg-12'>
+                                        <div className="card" style={{ backgroundImage: `url(${image})`, backgroundSize: 'cover', backgroundPosition: 'center', borderRadius: "10px" }}>
+                                            <div className="card-body">
+                                                <h5 className="card-title text-white" style={{ marginTop: "250px", fontWeight: 800 }}>BUY NOW</h5>
+                                                <p className="card-text text-white" style={{ fontWeight: 800 }}>AL BAHRI WAREHOUSE # 16 <br />
+                                                    AL ASAYEL STREET <br />
+                                                    AL QUOZ IND 2 – DUBAI – UAE</p>
+                                                <p className="card-text text-white" style={{ fontWeight: 800 }}>Amman Street - Industrial Area 2 - Anjman</p>
+                                                <div className="d-flex">
+                                                    <a className='mx-1' href="https://wa.me/+971505735436?text=Hello%20there,%20I%20want%20to%20buy%20your%20product" target="_blank">
+                                                        <img src="/images/whatsapp.png" className="img-fluid lazyload" style={{ height: "35px" }} alt="whatsapp" />
+                                                    </a>
+                                                    <a className='mx-1' href="https://www.facebook.com/profile.php?id=61554996632615&mibextid=9R9pXO" target="_blank">
+                                                        <img src="/images/facebook.png" className="img-fluid lazyload" style={{ height: "35px" }} alt="facebook" />
+                                                    </a>
+                                                    <a className='mx-1' href="https://www.youtube.com/channel/UCpyCCBRs_mJgmPZThPY-MMA" target="_blank">
+                                                        <img src="/images/youtube-logo.webp" className="img-fluid lazyload" style={{ height: "35px" }} alt="facebook" />
+                                                    </a>
+                                                    <a className='mx-1' href="https://www.instagram.com/diakool_airconditioners/" target="_blank">
+                                                        <img src="/images/instagram.png" className="img-fluid lazyload" style={{ height: "35px" }} alt="facebook" />
+                                                    </a>
+                                                    <a className='mx-1' href="https://www.linkedin.com/in/diakool-air-conditioners-b206072a2/" target="_blank">
+                                                        <img src="/images/linkedIn.png" className="img-fluid lazyload" style={{ height: "35px" }} alt="facebook" />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div> */}
+
+
+                                <div className="social-container">
+                                    <ul className="social-icons">
+                                        <h5 className="card-title text-dark" >BUY NOW</h5>
+                                        <p className="card-text text-dark" >AL BAHRI WAREHOUSE # 16 <br />
+                                            AL ASAYEL STREET <br />
+                                            AL QUOZ IND 2 – DUBAI – UAE</p>
+                                        <p className="card-text text-dark" >Amman Street - Industrial Area 2 - Anjman</p>
+
+                                        <li><a href="#"><i className="fa fa-facebook" /></a></li>
+                                        <li><a href="#"><i className="fa fa-instagram" /></a></li>
+                                        <li><a href="#"><i className="fa fa-youtube" /></a></li>
+                                        <li><a href="#"><i className="fa fa-linkedin" /></a></li>
+                                    </ul>
                                 </div>
-                                {/* <div className="d-none">
-                                    <div className="showroom-box-row">
-                                        <div className="showroom-box">
-                                            <div className="showroom-box-city">
-                                                <h3>DUBAI</h3>
-                                                <div className="showroom-flex">
-                                                    <div className="showroom-flex-icon">
-                                                        <img data-src="https://supergeneral.com/public/images/icon/location.png" className="img-fluid lazyload" />
-                                                    </div>
-                                                    <div className="showroom-flex-text">MPC Building, Airport Road, Near Cargo Village,<br /> P.O. Box No: 51027, Dubai, UAE.</div>
-                                                </div>
-                                                <div className="showroom-flex">
-                                                    <div className="showroom-flex-icon">
-                                                        <img data-src="https://supergeneral.com/public/images/icon/call.png" className="img-fluid lazyload" />
-                                                    </div>
-                                                    <div className="showroom-flex-text">04-2501230</div>
-                                                </div>
-                                                <div className="showroom-flex">
-                                                    <div className="showroom-flex-icon">
-                                                        <img data-src="https://supergeneral.com/public/images/icon/telephone.png" className="img-fluid lazyload" />
-                                                    </div>
-                                                    <div className="showroom-flex-text">04-2501265</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="showroom-box">
-                                            <div className="showroom-box-city border-right-0">
-                                                <h3>DUBAI</h3>
-                                                <div className="showroom-flex">
-                                                    <div className="showroom-flex-icon">
-                                                        <img data-src="https://supergeneral.com/public/images/icon/location.png" className="img-fluid lazyload" />
-                                                    </div>
-                                                    <div className="showroom-flex-text">Behind Sabkha Bus Station,<br /> Fikree Market, Deira – Dubai, UAE.</div>
-                                                </div>
-                                                <div className="showroom-flex">
-                                                    <div className="showroom-flex-icon">
-                                                        <img data-src="https://supergeneral.com/public/images/icon/call.png" className="img-fluid lazyload" />
-                                                    </div>
-                                                    <div className="showroom-flex-text">04-2252682</div>
-                                                </div>
-                                                <div className="showroom-flex">
-                                                    <div className="showroom-flex-icon">
-                                                        <img data-src="https://supergeneral.com/public/images/icon/telephone.png" className="img-fluid lazyload" />
-                                                    </div>
-                                                    <div className="showroom-flex-text">04-2265793</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="showroom-box">
-                                            <div className="showroom-box-city">
-                                                <h3>DUBAI</h3>
-                                                <div className="showroom-flex">
-                                                    <div className="showroom-flex-icon">
-                                                        <img data-src="https://supergeneral.com/public/images/icon/location.png" className="img-fluid lazyload" />
-                                                    </div>
-                                                    <div className="showroom-flex-text">Behind Sabkha Bus Station, Back Side of <br /> Grand Sina Hotel, Fikree Market, Deira – Dubai, UAE.</div>
-                                                </div>
-                                                <div className="showroom-flex">
-                                                    <div className="showroom-flex-icon">
-                                                        <img data-src="https://supergeneral.com/public/images/icon/call.png" className="img-fluid lazyload" />
-                                                    </div>
-                                                    <div className="showroom-flex-text">04-2252936</div>
-                                                </div>
-                                                <div className="showroom-flex">
-                                                    <div className="showroom-flex-icon">
-                                                        <img data-src="https://supergeneral.com/public/images/icon/telephone.png" className="img-fluid lazyload" />
-                                                    </div>
-                                                    <div className="showroom-flex-text">04-2252049</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="showroom-box">
-                                            <div className="showroom-box-city border-right-0">
-                                                <h3>SHARJAH</h3>
-                                                <div className="showroom-flex">
-                                                    <div className="showroom-flex-icon">
-                                                        <img data-src="https://supergeneral.com/public/images/icon/location.png" className="img-fluid lazyload" />
-                                                    </div>
-                                                    <div className="showroom-flex-text">Al Arooba Building, Opposite of Al Ansari Exchange,<br /> Next to Manama Supermarket, Rolla – Sharjah, UAE.</div>
-                                                </div>
-                                                <div className="showroom-flex">
-                                                    <div className="showroom-flex-icon">
-                                                        <img data-src="https://supergeneral.com/public/images/icon/call.png" className="img-fluid lazyload" />
-                                                    </div>
-                                                    <div className="showroom-flex-text">06-5680255</div>
-                                                </div>
-                                                <div className="showroom-flex">
-                                                    <div className="showroom-flex-icon">
-                                                        <img data-src="https://supergeneral.com/public/images/icon/telephone.png" className="img-fluid lazyload" />
-                                                    </div>
-                                                    <div className="showroom-flex-text">06-5680688</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="showroom-box mb-0">
-                                            <div className="showroom-box-city border-right-0 border-bottom-0">
-                                                <h3>ABU DHABI</h3>
-                                                <div className="showroom-flex">
-                                                    <div className="showroom-flex-icon">
-                                                        <img data-src="https://supergeneral.com/public/images/icon/location.png" className="img-fluid lazyload" />
-                                                    </div>
-                                                    <div className="showroom-flex-text">Building – 188, Shabia – 10, Next To Pure Veg <br />Restaurant, Nearby Al Jazeera Medical Centre<br /> Bus Stop, Musaffah, Abudhabi.</div>
-                                                </div>
-                                                <div className="showroom-flex">
-                                                    <div className="showroom-flex-icon">
-                                                        <img data-src="https://supergeneral.com/public/images/icon/call.png" className="img-fluid lazyload" />
-                                                    </div>
-                                                    <div className="showroom-flex-text">02-4476047</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> */}
-                                {/* <div className="d-none">
-                                    <div className="showroom-box-row">
-                                        <div className="showroom-box">
-                                            <div className="showroom-box-city">
-                                                <h3>SHOWROOM</h3>
-                                                <div className="showroom-flex">
-                                                    <div className="showroom-flex-icon">
-                                                        <img data-src="https://supergeneral.com/public/images/icon/location.png" className="img-fluid lazyload" />
-                                                    </div>
-                                                    <div className="showroom-flex-text">Musannah – Tareef, Oman</div>
-                                                </div>
-                                                <div className="showroom-flex">
-                                                    <div className="showroom-flex-icon">
-                                                        <img data-src="https://supergeneral.com/public/images/icon/call.png" className="img-fluid lazyload" />
-                                                    </div>
-                                                    <div className="showroom-flex-text">00968 26869724</div>
-                                                </div>
-                                                <div className="showroom-flex">
-                                                    <div className="showroom-flex-icon">
-                                                        <img data-src="https://supergeneral.com/public/images/icon/telephone.png" className="img-fluid lazyload" />
-                                                    </div>
-                                                    <div className="showroom-flex-text">00968 26970080</div>
-                                                </div>
-                                                <div className="showroom-flex">
-                                                    <div className="showroom-flex-icon">
-                                                        <img data-src="https://supergeneral.com/public/images/icon/mail.png" className="img-fluid lazyload" />
-                                                    </div>
-                                                    <div className="showroom-flex-text">sgcmusannah@supergeneral.ae</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> */}
+
+
+
+                                <ul className='icons-body'>
+                                    <li className='icons-list'><a href="#"><i className="fab fa  fa-facebook" aria-hidden="true" /></a></li>
+                                    <li className='icons-list'><a href="#"><i className="fab fa fa-twitter" aria-hidden="true" /></a></li>
+                                    <li className='icons-list'><a href="#"><i className="fab fa fa-google-plus" aria-hidden="true" /></a></li>
+                                    <li className='icons-list'><a href="#"><i className="fab fa fa-linkedin" aria-hidden="true" /></a></li>
+                                    <li className='icons-list'><a href="#"><i className="fab fa fa-instagram" aria-hidden="true" /></a></li>
+                                </ul>
+
+
                             </div>
                         </div>
                     </div>

@@ -1,0 +1,46 @@
+.breeze-img {
+  height: 40px;
+  position: absolute;
+  bottom: 0;
+  left: calc(0% - 50px); /* Adjusted left position */
+  transform: translateY(-50%);
+  animation: floatUpDown 1.5s ease-in-out infinite alternate,
+    rotate 7s linear infinite;
+}
+
+@keyframes floatUpDown {
+  0% {
+    top: -20px;
+  }
+  100% {
+    top: -10px;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.ac-img {
+  margin-left: 10px;
+  height: 50px;
+  position: absolute;
+  transform: translateY(-50%);
+  left: 80%;
+  bottom: 0;
+  transform: translateY(-50%);
+}
+.wind-img {
+  margin-left: 30px;
+  height: 50px;
+  position: absolute;
+  transform: rotate(90deg);
+  transform: translateY(-50%) rotate(90deg); /* Adjusted transform to make it vertical */
+  left: 80%;
+  bottom: 20;
+}
