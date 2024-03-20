@@ -260,53 +260,42 @@ const ProductDetails = () => {
             <div style={{ display: "none" }}>{<ProductInvoice key_features={key_features}
                 specification={specification} product={product} ref={componentRef} />}</div>
 
-            <div className="">
-                <div className="row">
+            <div>
+                {
+                    product.type !== "Cassette AC" && product.type !== "Floor Standing" ?
+                        (
+                            <>
+                                <div className="col-lg-12 mt-4 p-0">
+                                    <img
+                                        src={turboColl}
+                                        alt="Second Image"
+                                        className="img-fluid" />
+                                </div>
+                                <div className="col-lg-12 m-0 p-0">
+                                    <img
+                                        src={wallType}
+                                        alt="Second Image"
+                                        className="img-fluid" />
+                                </div>
+                            </>
+                        ) : null
+                }
 
-                    {
-                        product.type !== "Cassette AC" && product.type !== "Floor Standing" ?
-                            (
-                                <>
-                                    <div className="col-md-12 mt-4 p-0">
-                                        <div>
-                                            <img
-                                                src={turboColl}
-                                                alt="Second Image"
-                                                className="img-fluid" />
-                                        </div>
+                {
+                    product.type === "Cassette AC" && product.type === "Floor Standing" ?
+                        (
+                            <>
+                                <div className="col-md-12 m-0 p-0">
+                                    <div>
+                                        <img
+                                            src='/images/Web 1920 – 1.png'
+                                            alt="Second Image"
+                                            className="img-fluid" />
                                     </div>
-                                    <div className="col-md-12 m-0 p-0">
-                                        <div>
-                                            <img
-                                                src={wallType}
-                                                alt="Second Image"
-                                                className="img-fluid" />
-                                        </div>
-                                    </div>
-                                </>
-                            ) : null
-                    }
-
-
-                    {
-                        product.type === "Cassette AC" && product.type === "Floor Standing" ?
-                            (
-                                <>
-                                    <div className="col-md-12 m-0 p-0">
-                                        <div>
-                                            <img
-                                                src='/images/Web 1920 – 1.png'
-                                                alt="Second Image"
-                                                className="img-fluid" />
-                                        </div>
-                                    </div>
-                                </>
-                            ) : null
-                    }
-
-
-
-                </div>
+                                </div>
+                            </>
+                        ) : null
+                }
             </div>
         </>
     )

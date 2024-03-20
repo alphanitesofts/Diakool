@@ -218,22 +218,19 @@ const Specification = ({ specification, key_features }) => {
                                             AL QUOZ IND 2 – DUBAI – UAE</p>
                                         <p className="card-text text-dark" >Amman Street - Industrial Area 2 - Anjman</p>
 
-                                        <li><a href="#"><i className="fa fa-facebook" /></a></li>
-                                        <li><a href="#"><i className="fa fa-instagram" /></a></li>
-                                        <li><a href="#"><i className="fa fa-youtube" /></a></li>
-                                        <li><a href="#"><i className="fa fa-linkedin" /></a></li>
+                                        <ul className='icons-body'>
+                                            <li className='icons-list'><a href="https://wa.me/+971505735436?text=Hello%20there,%20I%20want%20to%20buy%20your%20product" target="_blank"><i className="fab fa fa-whatsapp" aria-hidden="true" /></a></li>
+                                            <li className='icons-list'><a href="https://www.facebook.com/profile.php?id=61554996632615&mibextid=9R9pXO" target="_blank"><i className="fab fa fa-facebook" aria-hidden="true" /></a></li>
+                                            <li className='icons-list'><a href="https://www.youtube.com/channel/UCpyCCBRs_mJgmPZThPY-MMA" target="_blank"><i className="fab fa fa-youtube" aria-hidden="true" /></a></li>
+                                            <li className='icons-list'><a href="https://www.instagram.com/diakool_airconditioners/" target="_blank"><i className="fab fa fa-instagram" aria-hidden="true" /></a></li>
+                                            <li className='icons-list'><a href="https://www.linkedin.com/in/diakool-air-conditioners-b206072a2/" target="_blank"><i className="fab fa fa-linkedin" aria-hidden="true" /></a></li>
+                                        </ul>
                                     </ul>
                                 </div>
 
 
 
-                                <ul className='icons-body'>
-                                    <li className='icons-list'><a href="#"><i className="fab fa  fa-facebook" aria-hidden="true" /></a></li>
-                                    <li className='icons-list'><a href="#"><i className="fab fa fa-twitter" aria-hidden="true" /></a></li>
-                                    <li className='icons-list'><a href="#"><i className="fab fa fa-google-plus" aria-hidden="true" /></a></li>
-                                    <li className='icons-list'><a href="#"><i className="fab fa fa-linkedin" aria-hidden="true" /></a></li>
-                                    <li className='icons-list'><a href="#"><i className="fab fa fa-instagram" aria-hidden="true" /></a></li>
-                                </ul>
+
 
 
                             </div>

@@ -8,11 +8,9 @@ import './Styles.css'
 
 function About() {
   return (
-    <section className="about_section layout_margin-bottom" >
+    <section className="about_section layout_margin-bottom" style={{marginTop:"20px"}}>
       <div className="container  ">
         <div className="row">
-
-      
 
           <div className="col-md-6 mx-auto">
           <img
@@ -36,8 +34,6 @@ function About() {
               <Link to={`/contact`} style={{ textDecoration: "none" }}>
                 Contact Us
               </Link>
-
-             
             </div>
             <img
               src={ac}

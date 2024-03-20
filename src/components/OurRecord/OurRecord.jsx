@@ -3,7 +3,6 @@ import '../OurRecord/OurRecord.css'
 import since from '../../Image/since.jpg'
 import ducted from '../../Image/AC-compressed.webp'
 
-
 function OurRecord() {
   return (
     <section className="section about-section gray-bg" id="about">
